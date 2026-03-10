@@ -1,218 +1,93 @@
-Customer Shopping Behavior Analysis
-Overview
+# 🛍️ Customer Shopping Behavior Analysis
 
-This project analyzes customer shopping behavior using a complete data analytics workflow. The goal is to extract business insights from purchase data by performing data exploration, cleaning, SQL analysis, and dashboard visualization.
+A data analysis project that explores transactional shopping data to uncover insights into customer spending patterns, product preferences, and subscription behavior — using **Python**, **PostgreSQL**, and **Power BI**.
 
-The analysis was conducted using Python, PostgreSQL, and Power BI, and the findings were summarized in a report and presentation.
+---
 
-This project demonstrates practical skills required for a Data Analyst role, including data preprocessing, SQL querying, data visualization, and insight generation.
+## 📌 Project Overview
 
-Dataset
+This project analyzes **3,900 purchase transactions** across multiple product categories. The goal is to support strategic business decisions by identifying customer segments, revenue drivers, and discount dependencies.
 
-The dataset contains 3,900 customer purchase transactions with 18 features describing customer demographics, product details, and purchase behavior.
+---
 
-Key columns include:
+## 📁 Dataset Summary
 
-Customer ID
+| Property | Details |
+|---|---|
+| Rows | 3,900 |
+| Columns | 18 |
+| Missing Data | 37 values in `review_rating` column |
 
-Age
+**Key Features:**
+- **Customer Demographics:** Age, Gender, Location, Subscription Status
+- **Purchase Details:** Item Purchased, Category, Purchase Amount, Season, Size, Color
+- **Shopping Behavior:** Discount Applied, Previous Purchases, Frequency of Purchases, Review Rating, Shipping Type
 
-Gender
+---
 
-Product Category
+## 🛠️ Tech Stack
 
-Product Name
+| Tool | Purpose |
+|---|---|
+| Python (pandas) | Data cleaning & feature engineering |
+| PostgreSQL | SQL-based business analysis |
+| Power BI | Interactive dashboard & visualization |
 
-Quantity Purchased
+---
 
-Purchase Amount
+## 🔍 Exploratory Data Analysis (Python)
 
-Discount Applied
+Data preparation steps performed in Python:
 
-Review Rating
+- **Data Loading** – Imported dataset using `pandas`
+- **Initial Exploration** – Used `df.info()` and `.describe()` for structure and summary statistics
+- **Missing Data Handling** – Imputed missing `review_rating` values using the median rating per product category
+- **Column Standardization** – Renamed all columns to `snake_case`
+- **Feature Engineering:**
+  - Created `age_group` column by binning customer ages
+  - Created `purchase_frequency_days` column from purchase data
+- **Data Consistency Check** – Verified redundancy between `discount_applied` and `promo_code_used`; dropped `promo_code_used`
+- **Database Integration** – Loaded cleaned DataFrame into PostgreSQL for SQL analysis
 
-Subscription Status
+---
 
-Shipping Type
+## 📊 SQL Business Analysis (PostgreSQL)
 
-Payment Method
+Ten business questions were answered using structured SQL queries:
 
-The dataset helps analyze customer behavior, product performance, and revenue patterns.
+| # | Analysis | Key Finding |
+|---|---|---|
+| 1 | Revenue by Gender | Male: $157,890 · Female: $75,191 |
+| 2 | High-Spending Discount Users | 839 customers spent above average despite using discounts |
+| 3 | Top 5 Products by Rating | Gloves (3.86), Sandals (3.84), Boots (3.82), Hat (3.80), Skirt (3.78) |
+| 4 | Shipping Type Comparison | Express avg: $60.48 · Standard avg: $58.46 |
+| 5 | Subscribers vs. Non-Subscribers | Similar avg spend (~$59.50 vs ~$59.87) |
+| 6 | Discount-Dependent Products | Hat (50%), Sneakers (49.66%), Coat (49.07%) |
+| 7 | Customer Segmentation | Loyal: 3,116 · Returning: 701 · New: 83 |
+| 8 | Top 3 Products per Category | Jewelry, Blouse, Sandals, Jacket lead their categories |
+| 9 | Repeat Buyers & Subscriptions | 2,518 non-subscribers vs 958 subscribers among repeat buyers |
+| 10 | Revenue by Age Group | Young Adult: $62,143 · Middle-aged: $59,197 |
 
-Tools & Technologies
+---
 
-Python
+## 📈 Power BI Dashboard
 
-Pandas
+An interactive dashboard was built to visualize key metrics:
 
-NumPy
+- KPI cards: Total Customers, Avg Purchase Amount, Avg Review Rating
+- % of Customers by Subscription Status (donut chart)
+- Sales & Revenue by Category and Age Group (bar charts)
+- Slicers for Gender, Category, Subscription Status, and Shipping Type
 
-Matplotlib / Seaborn
+---
 
-PostgreSQL
+## 💡 Business Recommendations
 
-SQL for data querying and analysis
+1. **Boost Subscriptions** – Promote exclusive member benefits to convert the 73% non-subscriber base
+2. **Customer Loyalty Programs** – Reward repeat buyers to accelerate movement into the "Loyal" segment
+3. **Review Discount Policy** – Balance sales volume gains with margin impact, especially for Hat and Sneakers
+4. **Product Positioning** – Feature top-rated products (Gloves, Sandals) prominently in marketing campaigns
+5. **Targeted Marketing** – Focus on Young Adult and Middle-aged age groups, the highest revenue contributors
 
-Power BI
 
-Interactive dashboard and visualizations
 
-Gamma
-
-Presentation creation
-
-Jupyter Notebook / VS Code
-
-Development environment
-
-Project Steps
-1. Data Loading (Python)
-
-Loaded the dataset using Pandas
-
-Checked dataset structure and data types
-
-Generated summary statistics
-
-2. Exploratory Data Analysis (EDA)
-
-Analyzed customer demographics
-
-Studied product categories and revenue trends
-
-Identified purchase patterns
-
-3. Data Cleaning
-
-Handled missing values (e.g., review ratings)
-
-Standardized column names
-
-Removed unnecessary columns
-
-Created additional features such as age groups
-
-4. SQL Analysis (PostgreSQL)
-
-Imported cleaned data into PostgreSQL
-
-Wrote SQL queries to analyze:
-
-Revenue by gender
-
-Product category performance
-
-Discount usage
-
-Customer segmentation
-
-Subscription behavior
-
-5. Dashboard Development (Power BI)
-
-Created an interactive dashboard showing:
-
-Revenue by gender
-
-Sales by product category
-
-Age group revenue distribution
-
-Shipping type comparison
-
-Customer segmentation
-
-6. Reporting & Presentation
-
-Generated a business insights report
-
-Created a presentation using Gamma
-
-Summarized key findings and recommendations
-
-Dashboard
-
-The Power BI dashboard provides a visual overview of:
-
-Total Revenue
-
-Customer Segmentation
-
-Product Performance
-
-Shipping Type Comparison
-
-Age Group Revenue Distribution
-
-The dashboard helps stakeholders quickly understand customer trends and business opportunities.
-
-Key Results
-
-Some important insights from the analysis:
-
-Male customers generated higher total revenue compared to female customers.
-
-Clothing category generated the highest sales.
-
-Jewelry had the highest number of orders in the accessories category.
-
-Only 27% of customers subscribed, indicating potential growth opportunities.
-
-Express shipping customers spent slightly more on average.
-
-Business Recommendations
-
-Increase subscription benefits to improve customer retention.
-
-Implement loyalty programs for repeat buyers.
-
-Optimize discount strategies to balance sales growth and profit margins.
-
-Target marketing campaigns toward high-revenue customer segments.
-
-How to Run the Project
-1. Clone the Repository
-git clone https://github.com/yourusername/customer-shopping-analysis.git
-cd customer-shopping-analysis
-
-2. Install Required Libraries
-pip install pandas numpy matplotlib seaborn psycopg2
-
-3. Run Python Analysis
-
-Run the Jupyter Notebook or Python scripts to:
-
-Load the dataset
-
-Perform EDA
-
-Clean the data
-
-4. Import Data into PostgreSQL
-
-Create a table in PostgreSQL
-
-Import the cleaned dataset
-
-Run the provided SQL queries
-
-5. Open Power BI Dashboard
-
-Open the .pbix file in Power BI Desktop to explore the interactive dashboard.
-
-Project Structure
-customer-shopping-analysis
-│
-├── dataset
-│   └── Customer_Shopping_Behaviour.csv
-│
-├── sql
-│   └── analysis_queries.sql
-│
-├── dashboard
-│   └── Customer_Shopping_Behaviour.pbix
-│
-├── presentation
-│   └── Customer-Shopping-Behavior-Analysis.pptx
-│
-└── README.md
